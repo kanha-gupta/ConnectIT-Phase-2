@@ -82,7 +82,7 @@ app.get("/sign-up",(req,res)=>{
 });
 
 app.get('/log-out', function(req, res){
-  req.logout();
+  //req.logout();
   res.redirect('/');
 });
 
@@ -448,7 +448,7 @@ app.post("/delete",(req,res)=>{
 
 let port = process.env.PORT;
 if (port == null || port == "") {
-  port = 3000;
+  port = 5000;
 }
 
 
