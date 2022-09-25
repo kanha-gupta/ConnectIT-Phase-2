@@ -1,5 +1,5 @@
 
-require('dotenv').config()
+const dotenv = require('dotenv')
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
@@ -9,8 +9,10 @@ const passportLocalMongoose = require("passport-local-mongoose");
 const session = require("express-session");
 const flash = require('connect-flash');
 const profile = require(__dirname+"/profile.js");
+const {mongo} = require("mongoose");
 
 
+dotenv.config({path : "../config.env"})
 const app = express();
 
 //using body parser
@@ -25,7 +27,7 @@ app.use(express.static(__dirname+'/public'));
 
 // setting up session
 app.use(session({
-  secret:process.env.SESSION_SECRET,
+  secret:`13214143m4nv1j3v12b3v1j2hv31b231212mb412m1j2hb312h3`,
   resave: false,
   saveUninitialized:false
 }))
@@ -39,7 +41,8 @@ app.use(flash());
 
 
 //connecting to mongodb database
-mongoose.connect(process.env.DATABASE);
+mongoose.connect( "mongodb://localhost:27017/interactive-comments-section");
+
 
 //user database schema
 const userSchema = new mongoose.Schema({
